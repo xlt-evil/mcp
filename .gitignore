@@ -1,0 +1,30 @@
+# 构建产物
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+mcp-server
+test-client
+
+# 日志文件
+*.log
+hello_log.txt
+
+# IDE文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 临时文件
+*.tmp
+*.temp
+
+# Go相关
+go.sum
+*.test
+
+# 系统文件
+.DS_Store
+Thumbs.db 

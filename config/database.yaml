@@ -1,0 +1,34 @@
+database:
+  enabled: true
+  driver: ""
+  host: ""
+  port: 3306
+  user: ""
+  password: ""
+  name: ""
+  
+  # 连接池配置
+  pool:
+    max_open_conns: 25
+    max_idle_conns: 5
+    conn_max_lifetime: "5m"
+  
+  # 安全配置
+  security:
+    ssl_mode: "preferred"
+    timeout: "30s"
+    read_timeout: "10s"
+    write_timeout: "10s"
+  
+  # 日志配置
+  logging:
+    enabled: true
+    level: "info"
+    file: "database.log"
+  
+  # 查询配置
+  query:
+    max_rows: 1000
+    timeout: "30s"
+    cache_enabled: true
+    cache_ttl: "5m" 

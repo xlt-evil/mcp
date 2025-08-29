@@ -1,0 +1,26 @@
+{
+  "mcpServers": {
+    "hello-mcp-server": {
+      "command": "./sayhi-server",
+      "args": [],
+      "env": {},
+      "description": "Hello MCP学习服务器 - 提供问候工具"
+    },
+    "database-mcp-server": {
+      "command": "./database-server",
+      "args": ["--config", "config/database.yaml"],
+      "env": {},
+      "description": "数据库MCP服务器 - 提供数据库查询工具"
+    }
+  },
+  "clientInfo": {
+    "name": "MCP学习客户端",
+    "version": "1.0.0"
+  },
+  "capabilities": {
+    "roots": {
+      "listChanged": true
+    },
+    "sampling": {}
+  }
+} 
