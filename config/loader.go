@@ -37,16 +37,12 @@ func LoadConfig(configPath string) (*Config, error) {
 // LoadDefaultConfig 加载默认配置
 func LoadDefaultConfig() *Config {
 	return &Config{
-<<<<<<< HEAD
 		Database: DatabaseConfig{},
 		Redis: RedisConfig{
 			Enabled: true,
 			Host:    "localhost",
 			Port:    6379,
 			DB:      0,
-=======
-		Database: DatabaseConfig{
->>>>>>> 51cb10fca5bc92e62ccc0999df5e3fbe4fef8bd5
 		},
 	}
 }
