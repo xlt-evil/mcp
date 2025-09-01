@@ -37,13 +37,6 @@ func LoadConfig(configPath string) (*Config, error) {
 func LoadDefaultConfig() *Config {
 	return &Config{
 		Database: DatabaseConfig{
-			Enabled:  true,
-			Driver:   "mysql",
-			Host:     "mysql.shop-cluster.svc.cluster.local",
-			Port:     3306,
-			User:     "root",
-			Password: "7H4wpXcP6VUF9Z%9",
-			Name:     "shop_kingdee",
 		},
 	}
 }
