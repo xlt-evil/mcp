@@ -77,8 +77,9 @@ type InputSchema struct {
 }
 
 type Property struct {
-	Type        string `json:"type"`
-	Description string `json:"description,omitempty"`
+	Type        string    `json:"type"`
+	Description string    `json:"description,omitempty"`
+	Items       *Property `json:"items,omitempty"`
 }
 
 // Tool Call 相关结构

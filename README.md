@@ -41,12 +41,16 @@ build.bat
 # 手动构建
 go build -o sayhi-server cmd/sayhi_server/main.go
 go build -o database-server cmd/database_server/main.go
+go build -o redis-server cmd/redis_server/main.go
 
 # 运行Hello服务器
 ./sayhi-server
 
 # 运行数据库服务器
 ./database-server
+
+# 运行Redis服务器
+./redis-server
 ```
 
 ### 客户端配置
@@ -80,7 +84,21 @@ go build -o database-server cmd/database_server/main.go
 }
 ```
 
-**同时配置两个服务器：**
+**Redis MCP服务器配置：**
+```json
+{
+  "mcpServers": {
+    "redis-server": {
+      "command": "path/to/redis-server",
+      "args": ["--config", "config/redis.yaml"],
+      "env": {},
+      "description": "Redis MCP服务器 - 提供Redis数据库操作工具"
+    }
+  }
+}
+```
+
+**同时配置三个服务器：**
 ```json
 {
   "mcpServers": {
@@ -95,6 +113,12 @@ go build -o database-server cmd/database_server/main.go
       "args": ["--config", "config/database.yaml"],
       "env": {},
       "description": "数据库MCP服务器 - 提供数据库查询工具"
+    },
+    "redis-server": {
+      "command": "path/to/redis-server",
+      "args": ["--config", "config/redis.yaml"],
+      "env": {},
+      "description": "Redis MCP服务器 - 提供Redis数据库操作工具"
     }
   }
 }
@@ -128,14 +152,21 @@ go build -o database-server cmd/database_server/main.go
 │   ├── sayhi_server/        # Hello MCP服务器
 │   │   ├── main.go         # 主程序
 │   │   └── README.md       # 说明文档
-│   └── database_server/     # 数据库MCP服务器
+│   ├── database_server/     # 数据库MCP服务器
+│   │   ├── main.go         # 主程序
+│   │   └── README.md       # 说明文档
+│   └── redis_server/        # Redis MCP服务器
 │       ├── main.go         # 主程序
 │       └── README.md       # 说明文档
 ├── config/                  # 配置管理
 │   ├── database.go         # 数据库配置结构
-│   └── database.yaml       # 数据库配置文件
+│   ├── database.yaml       # 数据库配置文件
+│   ├── redis.go            # Redis配置结构
+│   └── redis.yaml          # Redis配置文件
 ├── database/                # 数据库管理
 │   └── manager.go          # 数据库管理器
+├── redis/                   # Redis管理
+│   └── manager.go          # Redis管理器
 ├── types/                   # 共享类型
 │   └── mcp_types.go        # MCP类型定义
 ├── examples/                # 使用示例

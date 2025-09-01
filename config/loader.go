@@ -10,6 +10,7 @@ import (
 // Config 主配置结构
 type Config struct {
 	Database DatabaseConfig `yaml:"database" json:"database"`
+	Redis    RedisConfig    `yaml:"redis" json:"redis"`
 }
 
 // LoadConfig 从文件加载配置
@@ -36,14 +37,12 @@ func LoadConfig(configPath string) (*Config, error) {
 // LoadDefaultConfig 加载默认配置
 func LoadDefaultConfig() *Config {
 	return &Config{
-		Database: DatabaseConfig{
-			Enabled:  true,
-			Driver:   "mysql",
-			Host:     "mysql.shop-cluster.svc.cluster.local",
-			Port:     3306,
-			User:     "root",
-			Password: "7H4wpXcP6VUF9Z%9",
-			Name:     "shop_kingdee",
+		Database: DatabaseConfig{},
+		Redis: RedisConfig{
+			Enabled: true,
+			Host:    "localhost",
+			Port:    6379,
+			DB:      0,
 		},
 	}
 }
@@ -65,4 +64,9 @@ func SaveConfig(config *Config, configPath string) error {
 // GetDatabaseConfig 获取数据库配置
 func (c *Config) GetDatabaseConfig() *DatabaseConfig {
 	return &c.Database
+}
+
+// GetRedisConfig 获取Redis配置
+func (c *Config) GetRedisConfig() *RedisConfig {
+	return &c.Redis
 }

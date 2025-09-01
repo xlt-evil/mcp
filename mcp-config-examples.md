@@ -32,7 +32,21 @@
 }
 ```
 
-### 3. 同时配置两个服务器
+### 3. Redis MCP服务器配置
+```json
+{
+  "mcpServers": {
+    "redis-server": {
+      "command": "C:\\path\\to\\your\\project\\redis-server.exe",
+      "args": ["--config", "config/redis.yaml"],
+      "env": {},
+      "description": "Redis MCP服务器 - 提供Redis数据库操作工具"
+    }
+  }
+}
+```
+
+### 4. 同时配置三个服务器
 ```json
 {
   "mcpServers": {
@@ -44,9 +58,15 @@
     },
     "database-server": {
       "command": "C:\\path\\to\\your\\project\\database-server.exe",
-      "args": [],
+      "args": ["--config", "config/database.yaml"],
       "env": {},
       "description": "数据库MCP服务器 - 提供数据库查询工具"
+    },
+    "redis-server": {
+      "command": "C:\\path\\to\\your\\project\\redis-server.exe",
+      "args": ["--config", "config/redis.yaml"],
+      "env": {},
+      "description": "Redis MCP服务器 - 提供Redis数据库操作工具"
     }
   }
 }
